@@ -1,0 +1,30 @@
+CREATE TABLE users(
+    id INT NOT NULL UNIQUE PRIMARY KEY,
+    username TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL
+);
+CREATE TABLE orders(
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id INT,
+    order_id BIGINT,
+    complete BOOLEAN
+);
+CREATE TABLE order_details(
+    order_id BIGINT NOT NULL,
+    item VARCHAR(20),
+    price NUMERIC(5,2),
+    quantity INT,
+    date DATE
+);
+CREATE TABLE foodmenu(
+    item VARCHAR(20),
+    price FLOAT,
+    startdate DATE,
+    enddate DATE
+);
+CREATE TABLE drinkmenu(
+    item VARCHAR(20),
+    price FLOAT
+);
+CREATE EXTENSION pgcrypto;
+
